@@ -1,0 +1,25 @@
+#
+# * Galera-related settings
+#
+# See the examples of server wsrep.cnf files in /usr/share/mariadb
+# and read more at https://mariadb.com/kb/en/galera-cluster/
+
+[galera]
+# Mandatory settings
+wsrep_on                 = ON
+wsrep_cluster_name       = "AppliCare Galera Cluster"
+wsrep_cluster_address    = "gcomm://$((for i in {0..3}; do tailscale ip droplet-0$i 2>/dev/null | head -n1; done) | grep . | paste -sd,)"
+wsrep_node_name          = "$(hostname)"
+wsrep_node_address	 = "$(tailscale ip | head -n1)"
+binlog_format            = row
+default_storage_engine   = InnoDB
+innodb_autoinc_lock_mode = 2
+
+# Optional settings
+bind-address = 0.0.0.0
+wsrep_sst_method	 = rsync
+wsrep_slave_threads	 = 1
+wsrep_provider_options	 = "gmcast.listen_addr=tcp://0.0.0.0:4567;ist.recv_addr=$(tailscale ip | head -n1)"
+wsrep_retry_autocommit	 = 3
+
+#innodb_flush_log_at_trx_commit = 0

@@ -1,0 +1,17 @@
+[Unit]
+Description=The Python backend for Applicare
+After=network.target
+
+[Service]
+Environment=rmq_ip="10.0.0.11"
+Environment=rmq_passwd="student123"
+Environment=PYTHONUNBUFFERED=1
+Type=simple
+User=root
+WorkingDirectory=/root/Capstone-Group-10/backend/
+ExecStart=/usr/bin/python3 backend.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1333 @@
+[
+  {
+    "timestamp": "2024-12-17T20:04:48.264024",
+    "query": {
+      "phase": "appliance_collection",
+      "status": "using_mock_data",
+      "mock_appliances": [
+        {
+          "type": "washer",
+          "brand": "whirlpool",
+          "model": "WTW5000DW",
+          "description": "Common washer problems and solutions",
+          "problems": {
+            "drum": [
+              "bearing",
+              "belt",
+              "motor",
+              "seal"
+            ],
+            "control": [
+              "panel",
+              "board",
+              "buttons",
+              "display"
+            ],
+            "water_system": [
+              "pump",
+              "hose",
+              "valve",
+              "filter"
+            ],
+            "door": [
+              "lock",
+              "seal",
+              "hinge",
+              "handle"
+            ]
+          }
+        },
+        {
+          "type": "washer",
+          "brand": "lg",
+          "model": "WM3900HWA",
+          "description": "Common washer problems and solutions",
+          "problems": {
+            "drum": [
+              "bearing",
+              "belt",
+              "motor",
+              "seal"
+            ],
+            "control": [
+              "panel",
+              "board",
+              "buttons",
+              "display"
+            ],
+            "water_system": [
+              "pump",
+              "hose",
+              "valve",
+              "filter"
+            ],
+            "door": [
+              "lock",
+              "seal",
+              "hinge",
+              "handle"
+            ]
+          }
+        },
+        {
+          "type": "refrigerator",
+          "brand": "samsung",
+          "model": "RF28R7551SR",
+          "description": "Common refrigerator problems and solutions",
+          "problems": {
+            "cooling": [
+              "compressor",
+              "evaporator",
+              "condenser",
+              "fan"
+            ],
+            "defrost": [
+              "heater",
+              "timer",
+              "thermostat",
+              "sensor"
+            ],
+            "ice_maker": [
+              "motor",
+              "valve",
+              "mold",
+              "ejector"
+            ],
+            "sealing": [
+              "gasket",
+              "door_seal",
+              "hinge",
+              "closure"
+            ]
+          }
+        }
+      ]
+    },
+    "query_type": "insert_appliance"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.699646",
+    "query": {
+      "phase": "parts_collection",
+      "status": "using_mock_data",
+      "mock_appliances_processed": [
+        {
+          "brand": "whirlpool",
+          "model": "WTW5000DW",
+          "type": "washer"
+        },
+        {
+          "brand": "lg",
+          "model": "WM3900HWA",
+          "type": "washer"
+        },
+        {
+          "brand": "samsung",
+          "model": "RF28R7551SR",
+          "type": "refrigerator"
+        }
+      ]
+    },
+    "query_type": "insert_appliance"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.699922",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "bearing for WTW5000DW",
+        "https://example.com/bearing.jpg",
+        "https://example.com/parts/bearing",
+        "https://example.com/videos/bearing"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.699996",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "bearing for WTW5000DW",
+        "Faulty bearing",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700066",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "belt for WTW5000DW",
+        "https://example.com/belt.jpg",
+        "https://example.com/parts/belt",
+        "https://example.com/videos/belt"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700126",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "belt for WTW5000DW",
+        "Faulty belt",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700210",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "motor for WTW5000DW",
+        "https://example.com/motor.jpg",
+        "https://example.com/parts/motor",
+        "https://example.com/videos/motor"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700274",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "motor for WTW5000DW",
+        "Faulty motor",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700342",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "seal for WTW5000DW",
+        "https://example.com/seal.jpg",
+        "https://example.com/parts/seal",
+        "https://example.com/videos/seal"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700394",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "seal for WTW5000DW",
+        "Faulty seal",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700450",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "panel for WTW5000DW",
+        "https://example.com/panel.jpg",
+        "https://example.com/parts/panel",
+        "https://example.com/videos/panel"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700503",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "panel for WTW5000DW",
+        "Faulty panel",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700572",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "board for WTW5000DW",
+        "https://example.com/board.jpg",
+        "https://example.com/parts/board",
+        "https://example.com/videos/board"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700636",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "board for WTW5000DW",
+        "Faulty board",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700734",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "buttons for WTW5000DW",
+        "https://example.com/buttons.jpg",
+        "https://example.com/parts/buttons",
+        "https://example.com/videos/buttons"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700813",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "buttons for WTW5000DW",
+        "Faulty buttons",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700902",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "display for WTW5000DW",
+        "https://example.com/display.jpg",
+        "https://example.com/parts/display",
+        "https://example.com/videos/display"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.700967",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "display for WTW5000DW",
+        "Faulty display",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701030",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "pump for WTW5000DW",
+        "https://example.com/pump.jpg",
+        "https://example.com/parts/pump",
+        "https://example.com/videos/pump"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701086",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "pump for WTW5000DW",
+        "Faulty pump",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701153",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "hose for WTW5000DW",
+        "https://example.com/hose.jpg",
+        "https://example.com/parts/hose",
+        "https://example.com/videos/hose"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701209",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "hose for WTW5000DW",
+        "Faulty hose",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701273",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "valve for WTW5000DW",
+        "https://example.com/valve.jpg",
+        "https://example.com/parts/valve",
+        "https://example.com/videos/valve"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701332",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "valve for WTW5000DW",
+        "Faulty valve",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701386",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "filter for WTW5000DW",
+        "https://example.com/filter.jpg",
+        "https://example.com/parts/filter",
+        "https://example.com/videos/filter"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701442",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "filter for WTW5000DW",
+        "Faulty filter",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701504",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "lock for WTW5000DW",
+        "https://example.com/lock.jpg",
+        "https://example.com/parts/lock",
+        "https://example.com/videos/lock"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701554",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "lock for WTW5000DW",
+        "Faulty lock",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701620",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "seal for WTW5000DW",
+        "https://example.com/seal.jpg",
+        "https://example.com/parts/seal",
+        "https://example.com/videos/seal"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701725",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "seal for WTW5000DW",
+        "Faulty seal",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701791",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "hinge for WTW5000DW",
+        "https://example.com/hinge.jpg",
+        "https://example.com/parts/hinge",
+        "https://example.com/videos/hinge"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701847",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "hinge for WTW5000DW",
+        "Faulty hinge",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701904",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "handle for WTW5000DW",
+        "https://example.com/handle.jpg",
+        "https://example.com/parts/handle",
+        "https://example.com/videos/handle"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.701959",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "handle for WTW5000DW",
+        "Faulty handle",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702031",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "bearing for WM3900HWA",
+        "https://example.com/bearing.jpg",
+        "https://example.com/parts/bearing",
+        "https://example.com/videos/bearing"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702088",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "bearing for WM3900HWA",
+        "Faulty bearing",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702157",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "belt for WM3900HWA",
+        "https://example.com/belt.jpg",
+        "https://example.com/parts/belt",
+        "https://example.com/videos/belt"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702212",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "belt for WM3900HWA",
+        "Faulty belt",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702266",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "motor for WM3900HWA",
+        "https://example.com/motor.jpg",
+        "https://example.com/parts/motor",
+        "https://example.com/videos/motor"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702317",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "motor for WM3900HWA",
+        "Faulty motor",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702373",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "seal for WM3900HWA",
+        "https://example.com/seal.jpg",
+        "https://example.com/parts/seal",
+        "https://example.com/videos/seal"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702450",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "seal for WM3900HWA",
+        "Faulty seal",
+        "drum"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702508",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "panel for WM3900HWA",
+        "https://example.com/panel.jpg",
+        "https://example.com/parts/panel",
+        "https://example.com/videos/panel"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702559",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "panel for WM3900HWA",
+        "Faulty panel",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702614",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "board for WM3900HWA",
+        "https://example.com/board.jpg",
+        "https://example.com/parts/board",
+        "https://example.com/videos/board"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702665",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "board for WM3900HWA",
+        "Faulty board",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702744",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "buttons for WM3900HWA",
+        "https://example.com/buttons.jpg",
+        "https://example.com/parts/buttons",
+        "https://example.com/videos/buttons"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702796",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "buttons for WM3900HWA",
+        "Faulty buttons",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702849",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "display for WM3900HWA",
+        "https://example.com/display.jpg",
+        "https://example.com/parts/display",
+        "https://example.com/videos/display"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702900",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "display for WM3900HWA",
+        "Faulty display",
+        "control"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.702954",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "pump for WM3900HWA",
+        "https://example.com/pump.jpg",
+        "https://example.com/parts/pump",
+        "https://example.com/videos/pump"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703005",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "pump for WM3900HWA",
+        "Faulty pump",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703069",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "hose for WM3900HWA",
+        "https://example.com/hose.jpg",
+        "https://example.com/parts/hose",
+        "https://example.com/videos/hose"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703127",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "hose for WM3900HWA",
+        "Faulty hose",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703185",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "valve for WM3900HWA",
+        "https://example.com/valve.jpg",
+        "https://example.com/parts/valve",
+        "https://example.com/videos/valve"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703238",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "valve for WM3900HWA",
+        "Faulty valve",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703301",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "filter for WM3900HWA",
+        "https://example.com/filter.jpg",
+        "https://example.com/parts/filter",
+        "https://example.com/videos/filter"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703359",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "filter for WM3900HWA",
+        "Faulty filter",
+        "water_system"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703415",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "lock for WM3900HWA",
+        "https://example.com/lock.jpg",
+        "https://example.com/parts/lock",
+        "https://example.com/videos/lock"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703479",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "lock for WM3900HWA",
+        "Faulty lock",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703538",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "seal for WM3900HWA",
+        "https://example.com/seal.jpg",
+        "https://example.com/parts/seal",
+        "https://example.com/videos/seal"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703589",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "seal for WM3900HWA",
+        "Faulty seal",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703644",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "hinge for WM3900HWA",
+        "https://example.com/hinge.jpg",
+        "https://example.com/parts/hinge",
+        "https://example.com/videos/hinge"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703765",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "hinge for WM3900HWA",
+        "Faulty hinge",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703821",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "handle for WM3900HWA",
+        "https://example.com/handle.jpg",
+        "https://example.com/parts/handle",
+        "https://example.com/videos/handle"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703897",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "handle for WM3900HWA",
+        "Faulty handle",
+        "door"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.703959",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "compressor for RF28R7551SR",
+        "https://example.com/compressor.jpg",
+        "https://example.com/parts/compressor",
+        "https://example.com/videos/compressor"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704023",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "compressor for RF28R7551SR",
+        "Faulty compressor",
+        "cooling"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704093",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "evaporator for RF28R7551SR",
+        "https://example.com/evaporator.jpg",
+        "https://example.com/parts/evaporator",
+        "https://example.com/videos/evaporator"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704153",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "evaporator for RF28R7551SR",
+        "Faulty evaporator",
+        "cooling"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704210",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "condenser for RF28R7551SR",
+        "https://example.com/condenser.jpg",
+        "https://example.com/parts/condenser",
+        "https://example.com/videos/condenser"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704271",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "condenser for RF28R7551SR",
+        "Faulty condenser",
+        "cooling"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704328",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "fan for RF28R7551SR",
+        "https://example.com/fan.jpg",
+        "https://example.com/parts/fan",
+        "https://example.com/videos/fan"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704382",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "fan for RF28R7551SR",
+        "Faulty fan",
+        "cooling"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704439",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "heater for RF28R7551SR",
+        "https://example.com/heater.jpg",
+        "https://example.com/parts/heater",
+        "https://example.com/videos/heater"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704492",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "heater for RF28R7551SR",
+        "Faulty heater",
+        "defrost"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704568",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "timer for RF28R7551SR",
+        "https://example.com/timer.jpg",
+        "https://example.com/parts/timer",
+        "https://example.com/videos/timer"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704624",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "timer for RF28R7551SR",
+        "Faulty timer",
+        "defrost"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704704",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "thermostat for RF28R7551SR",
+        "https://example.com/thermostat.jpg",
+        "https://example.com/parts/thermostat",
+        "https://example.com/videos/thermostat"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704763",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "thermostat for RF28R7551SR",
+        "Faulty thermostat",
+        "defrost"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704820",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "sensor for RF28R7551SR",
+        "https://example.com/sensor.jpg",
+        "https://example.com/parts/sensor",
+        "https://example.com/videos/sensor"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704874",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "sensor for RF28R7551SR",
+        "Faulty sensor",
+        "defrost"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704931",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "motor for RF28R7551SR",
+        "https://example.com/motor.jpg",
+        "https://example.com/parts/motor",
+        "https://example.com/videos/motor"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.704979",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "motor for RF28R7551SR",
+        "Faulty motor",
+        "ice_maker"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705024",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "valve for RF28R7551SR",
+        "https://example.com/valve.jpg",
+        "https://example.com/parts/valve",
+        "https://example.com/videos/valve"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705059",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "valve for RF28R7551SR",
+        "Faulty valve",
+        "ice_maker"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705126",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "mold for RF28R7551SR",
+        "https://example.com/mold.jpg",
+        "https://example.com/parts/mold",
+        "https://example.com/videos/mold"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705168",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "mold for RF28R7551SR",
+        "Faulty mold",
+        "ice_maker"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705201",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "ejector for RF28R7551SR",
+        "https://example.com/ejector.jpg",
+        "https://example.com/parts/ejector",
+        "https://example.com/videos/ejector"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705232",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "ejector for RF28R7551SR",
+        "Faulty ejector",
+        "ice_maker"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705270",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "gasket for RF28R7551SR",
+        "https://example.com/gasket.jpg",
+        "https://example.com/parts/gasket",
+        "https://example.com/videos/gasket"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705305",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "gasket for RF28R7551SR",
+        "Faulty gasket",
+        "sealing"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705338",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "door_seal for RF28R7551SR",
+        "https://example.com/door_seal.jpg",
+        "https://example.com/parts/door_seal",
+        "https://example.com/videos/door_seal"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705372",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "door_seal for RF28R7551SR",
+        "Faulty door_seal",
+        "sealing"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705413",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "hinge for RF28R7551SR",
+        "https://example.com/hinge.jpg",
+        "https://example.com/parts/hinge",
+        "https://example.com/videos/hinge"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705448",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "hinge for RF28R7551SR",
+        "Faulty hinge",
+        "sealing"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705492",
+    "query": {
+      "query": "\n          INSERT IGNORE INTO parts \n          (part_name, part_image, part_link, instructions_video)\n          VALUES (%s, %s, %s, %s)\n        ",
+      "params": [
+        "closure for RF28R7551SR",
+        "https://example.com/closure.jpg",
+        "https://example.com/parts/closure",
+        "https://example.com/videos/closure"
+      ]
+    },
+    "query_type": "insert_part"
+  },
+  {
+    "timestamp": "2024-12-17T20:04:50.705526",
+    "query": {
+      "query": "\n            INSERT IGNORE INTO issues_parts (issue_id, part_id)\n            SELECT i.issue_id, p.part_id\n            FROM issue_types i\n            JOIN parts p ON p.part_name = %s\n            JOIN problem_areas pa ON i.area_id = pa.area_id\n            WHERE i.issue_description = %s\n            AND pa.area_name = %s\n          ",
+      "params": [
+        "closure for RF28R7551SR",
+        "Faulty closure",
+        "sealing"
+      ]
+    },
+    "query_type": "insert_part"
+  }
+]

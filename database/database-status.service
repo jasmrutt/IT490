@@ -1,0 +1,14 @@
+[Unit]
+Description=Status Check Listener for Database/Rabbitmq Proxy Service (dbworker)
+After=dbworker.service
+BindsTo=dbworker.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/socat TCP-LISTEN:9999,fork,reuseaddr EXEC:"/root/Capstone-Group-10/database/.check_dbworker.sh"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=The Python worker for conecting RabbitMQ to MariaDB (for Applicare)
+After=network.target mariadb.service
+BindsTo=mariadb.service
+
+[Service]
+Environment=mdb_ip="10.0.0.12"
+Environment=mdb_passwd="student123"
+Environment=rmq_ip="10.0.0.11"
+Environment=rmq_passwd="student123"
+Environment=PYTHONUNBUFFERED=1
+User=root
+WorkingDirectory=/root/Capstone-Group-10/database/
+ExecStart=/usr/bin/python3 dbworker.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

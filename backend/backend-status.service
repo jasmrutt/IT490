@@ -1,0 +1,14 @@
+[Unit]
+Description=Status Check Listener for Backend Service
+After=backend.service
+BindsTo=backend.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/socat TCP-LISTEN:9998,fork,reuseaddr EXEC:"/root/Capstone-Group-10/backend/.check_backend.sh"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
